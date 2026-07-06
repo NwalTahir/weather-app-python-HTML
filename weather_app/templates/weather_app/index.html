@@ -320,36 +320,58 @@
 </head>
 <body>
 
-    <div class="sidebar">
+<div class="sidebar">
     <div class="sidebar-header-mobile">
         <div class="brand-title">
-            <img src="/static/weather_app/images/logo.png" alt="Logo" style="width:24px; height:24px;"> <span>WeatherOS</span>
+            <svg class="brand-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+                <circle cx="12" cy="12" r="4" fill="currentColor"></circle>
+            </svg>
+            <span>WeatherOS</span>
         </div>
-        
         <button class="hamburger-menu-btn" onclick="toggleMobileMenu()">
             <span></span>
             <span></span>
             <span></span>
         </button>
     </div>
-
     <div class="mode-toggle-box-always-visible">
-        <div class="theme-switch-container">
-            <span>Light</span>
-            <input type="checkbox" id="themeToggleCheckbox">
-            <span>Dark</span>
+        <div class="mode-toggle-zone">
+            <div class="toggle-pill-track" id="themeToggleTrigger">
+                <div class="sliding-thumb"></div>
+                <div class="track-icons-layer">
+                    <span class="mode-icon">☀️</span>
+                    <span class="mode-icon">🌙</span>
+                </div>
+            </div>
         </div>
     </div>
-
     <div class="menu-list" id="mobileMenuList">
-        <a href="#" class="menu-item">Home</a>
-        <a href="#" class="menu-item">Weather Alerts</a>
-        <a href="#" class="menu-item">Report Center</a>
-        <a href="#" class="menu-item">About Us</a>
-        <a href="#" class="menu-item">Settings</a>
+        <a href="#" class="menu-item active">
+            <svg class="menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
+            Home
+        </a>
+        <a href="#" class="menu-item">
+            <svg class="menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path></svg>
+            Weather Alerts
+        </a>
+        <a href="#" class="menu-item">
+            <svg class="menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path></svg>
+            Report Center
+        </a>
+        <a href="#" class="menu-item">
+            <svg class="menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+            About Us
+        </a>
+        <a href="#" class="menu-item">
+            <svg class="menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+            Settings
+        </a>
     </div>
 </div>
-        
+
+    
+    
         <div class="mode-toggle-box">
             <div class="theme-pill-container">
                 <div class="theme-pill-opt active-pill" id="lightPill" onclick="applyThemeStyle('light')">☀️ Light</div>
