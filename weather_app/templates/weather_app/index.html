@@ -203,43 +203,159 @@
         }
 
         /* ==========================================================================
-   MOBILE & TABLET RESPONSIVE OVERRIDES
+   UPDATED PROFESSIONAL RESPONSIVE DESIGN (PREMIUM MOBILE UX)
    ========================================================================== */
-@media (max-width: 850px) {
-    /* Main body ko stack kar dein */
-    body { flex-direction: column; overflow-y: auto; }
-    
-    /* Sidebar ko top par le aayen */
-    .sidebar { 
-        width: 100%; 
-        height: auto; 
-        flex-direction: row; 
-        padding: 15px; 
-        border-right: none; 
-        border-bottom: 1px solid var(--border-color); 
-        align-items: center;
-        justify-content: space-between;
+
+@media screen and (max-width: 1024px) {
+    .main-container { padding: 20px 20px 0 20px; }
+    .dashboard-panel { max-width: 100%; }
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        flex-direction: column;
+        height: auto;
+        overflow-y: auto;
     }
-    .brand-title { margin-bottom: 0; font-size: 18px; }
-    .menu-list { flex-direction: row; gap: 10px; overflow-x: auto; }
-    .menu-item { padding: 8px 12px; font-size: 13px; }
-    .mode-toggle-box { border-top: none; padding: 0; }
+
+    /* Professional Sidebar Adjustment */
+    .sidebar {
+        width: 100%;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+        padding: 15px 20px;
+    }
+
+    .brand-title {
+        margin-bottom: 12px;
+        justify-content: center;
+    }
+
+    /* Kichri Dur Karne Ke Liye: Dynamic Grid Clean look */
+    .menu-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+        gap: 8px;
+        width: 100%;
+    }
+
+    .menu-item {
+        padding: 10px;
+        font-size: 13px;
+        justify-content: center;
+        border: 1px solid var(--border-color);
+        background: var(--card-bg);
+    }
+
+    .mode-toggle-box {
+        margin-top: 12px;
+        padding-top: 12px;
+        border-top: 1px dashed var(--border-color);
+    }
+
+    .main-container {
+        padding: 16px;
+        height: auto;
+        overflow-y: visible;
+    }
+
+    .top-row {
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 20px;
+    }
+
+    .search-form {
+        width: 100%;
+    }
+
+    /* Main Weather Block Auto-Stacking */
+    .main-weather-block {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 20px;
+    }
+
+    .left-vector-zone {
+        justify-content: center;
+    }
+
+    .extra-stats {
+        border-left: none;
+        border-top: 1px solid var(--border-color);
+        border-bottom: 1px solid var(--border-color);
+        padding: 15px 0;
+    }
+
+    .right-indices-box {
+        min-width: 100%;
+    }
+
+    .condition-headline {
+        text-align: center;
+    }
+
+    /* FIX: Tabs Bahar Nikalna Band (Scrollable & Responsive Touch) */
+    .view-tabs {
+        display: flex;
+        overflow-x: auto;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 4px;
+        border-bottom: 1px solid var(--border-color);
+        gap: 10px;
+    }
+
+    .view-tabs::-webkit-scrollbar {
+        height: 4px;
+    }
     
-    /* Main Content adjustments */
-    .main-container { padding: 15px; }
-    .top-row { flex-direction: column; }
-    .search-form { width: 100%; }
-    
-    /* Stats grid stack kar dein */
-    .main-weather-block { grid-template-columns: 1fr; text-align: center; }
-    .left-vector-zone { justify-content: center; }
-    .extra-stats { border-left: none; border-top: 1px solid var(--border-color); padding: 15px 0 0 0; }
-    
-    /* Slider ko mobile friendly banayen */
-    .slider-inner-container { justify-content: flex-start; }
-    
-    /* Footer stacking */
-    .footer-bottom-flex { flex-direction: column; align-items: center; text-align: center; }
+    .view-tabs::-webkit-scrollbar-thumb {
+        background: var(--border-color);
+        border-radius: 4px;
+    }
+
+    .tab-node {
+        flex: 1;
+        text-align: center;
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+
+    .triggers-split-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-columns-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .footer-bottom-flex {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 15px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .menu-list {
+        grid-template-columns: repeat(2, 1fr); /* 2 Columns grid for uniform mobile links */
+    }
+
+    .weather-card, .outside-section-card {
+        padding: 20px 15px;
+    }
+
+    .temp-num-container {
+        font-size: 60px;
+    }
+
+    .footer-columns-grid {
+        grid-template-columns: 1fr;
+    }
 }
         
     </style>
