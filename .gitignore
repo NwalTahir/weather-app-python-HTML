@@ -1,0 +1,24 @@
+# Byte-compiled / optimized / Bureaucracy files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Database
+db.sqlite3
+db.sqlite3-journal
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+
+# Vercel / Build outputs
+.vercel/
+dist/
+build/
+
+# OS files
+.DS_Store
+Thumbs.db
