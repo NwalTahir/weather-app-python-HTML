@@ -170,13 +170,8 @@
         .setting-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px dashed var(--border-color); }
 
 /* ==========================================================================
-   UPDATED PROFESSIONAL RESPONSIVE DESIGN (PREMIUM MOBILE UX)
+   PROFESSIONAL HAMBURGER NAV WITH ALWAYS-VISIBLE TOGGLE & CENTERED FOOTER
    ========================================================================== */
-
-@media screen and (max-width: 1024px) {
-    .main-container { padding: 20px 20px 0 20px; }
-    .dashboard-panel { max-width: 100%; }
-}
 
 @media screen and (max-width: 768px) {
     body {
@@ -185,42 +180,83 @@
         overflow-y: auto;
     }
 
-    /* Professional Sidebar Adjustment */
+    /* Sidebar Container Adjustment */
     .sidebar {
         width: 100%;
         height: auto;
         border-right: none;
         border-bottom: 1px solid var(--border-color);
         padding: 15px 20px;
+        display: flex;
+        flex-direction: column;
+        background: var(--sidebar-bg);
     }
 
-    .brand-title {
-        margin-bottom: 12px;
-        justify-content: center;
-    }
-
-    /* Kichri Dur Karne Ke Liye: Dynamic Grid Clean look */
-    .menu-list {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-        gap: 8px;
+    /* Title & Hamburger Row alignment */
+    .sidebar-header-mobile {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
         width: 100%;
     }
 
-    .menu-item {
-        padding: 10px;
-        font-size: 13px;
-        justify-content: center;
-        border: 1px solid var(--border-color);
-        background: var(--card-bg);
+    .brand-title {
+        margin-bottom: 0 !important;
     }
 
-    .mode-toggle-box {
+    /* Hamburger Menu Icon Design */
+    .hamburger-menu-btn {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 24px;
+        height: 18px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+    }
+
+    .hamburger-menu-btn span {
+        width: 100%;
+        height: 2px;
+        background-color: var(--text-main);
+        border-radius: 2px;
+        transition: all 0.3s ease;
+    }
+
+    /* Always Visible Light/Dark Theme Bar (WeatherOS ke theek niche) */
+    .mode-toggle-box-always-visible {
+        width: 100%;
         margin-top: 12px;
-        padding-top: 12px;
+        display: block !important; /* Yeh hamesha visible rahega */
+    }
+
+    /* Links initial state: hidden on mobile until clicked */
+    .menu-list {
+        display: none; 
+        flex-direction: column;
+        width: 100%;
+        margin-top: 15px;
+        gap: 8px;
+        padding-top: 10px;
         border-top: 1px dashed var(--border-color);
     }
 
+    /* Show links when active class is triggered via JS */
+    .menu-list.active {
+        display: flex !important;
+    }
+
+    .menu-item {
+        width: 100%;
+        padding: 12px 15px;
+        border-radius: 8px;
+        justify-content: flex-start;
+        background: var(--card-bg);
+        border: 1px solid var(--border-color);
+    }
+
+    /* Remaining Page Layout Fixes */
     .main-container {
         padding: 16px;
         height: auto;
@@ -230,98 +266,51 @@
     .top-row {
         flex-direction: column;
         gap: 12px;
-        margin-bottom: 20px;
     }
 
     .search-form {
         width: 100%;
     }
 
-    /* Main Weather Block Auto-Stacking */
-    .main-weather-block {
-        grid-template-columns: 1fr;
-        text-align: center;
-        gap: 20px;
-    }
-
-    .left-vector-zone {
-        justify-content: center;
-    }
-
-    .extra-stats {
-        border-left: none;
-        border-top: 1px solid var(--border-color);
-        border-bottom: 1px solid var(--border-color);
-        padding: 15px 0;
-    }
-
-    .right-indices-box {
-        min-width: 100%;
-    }
-
-    .condition-headline {
-        text-align: center;
-    }
-
-    /* FIX: Tabs Bahar Nikalna Band (Scrollable & Responsive Touch) */
+    /* Tabs horizontal clean touch scroll */
     .view-tabs {
         display: flex;
         overflow-x: auto;
         white-space: nowrap;
         -webkit-overflow-scrolling: touch;
-        padding-bottom: 4px;
-        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 6px;
         gap: 10px;
+        border-bottom: 1px solid var(--border-color);
     }
-
+    
     .view-tabs::-webkit-scrollbar {
         height: 4px;
     }
-    
     .view-tabs::-webkit-scrollbar-thumb {
         background: var(--border-color);
-        border-radius: 4px;
+        border-radius: 2px;
     }
 
     .tab-node {
         flex: 1;
+        min-width: 110px;
         text-align: center;
-        padding: 8px 12px;
-        font-size: 14px;
     }
 
-    .triggers-split-layout {
+    .main-weather-block, .triggers-split-layout {
         grid-template-columns: 1fr;
     }
 
-    .footer-columns-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
-    }
-
-    .footer-bottom-flex {
+    /* SIGNATURE CENTERING */
+    .footer-bottom-flex, 
+    .footer-signature-zone,
+    .footer-signature-zone * {
+        display: flex;
         flex-direction: column;
-        align-items: center;
-        text-align: center;
-        gap: 15px;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .menu-list {
-        grid-template-columns: repeat(2, 1fr); /* 2 Columns grid for uniform mobile links */
-    }
-
-    .weather-card, .outside-section-card {
-        padding: 20px 15px;
-    }
-
-    .temp-num-container {
-        font-size: 60px;
-    }
-
-    .footer-columns-grid {
-        grid-template-columns: 1fr;
+        align-items: center !important;
+        text-align: center !important;
+        justify-content: center !important;
+        width: 100%;
     }
 }
         
@@ -330,17 +319,36 @@
     <script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
 </head>
 <body>
+
     <div class="sidebar">
-        <div>
-            <div class="brand-title">🌌 WeatherOS</div>
-            <ul class="menu-list">
-                <li class="menu-item active" onclick="switchPanel('home-panel', this)">🏠 Home</li>
-                <li class="menu-item" onclick="switchPanel('alerts-panel', this)">⚠️ Weather Alerts</li>
-                <li class="menu-item" onclick="switchPanel('reports-panel', this)">📊 Report Center</li>
-                <li class="menu-item" onclick="switchPanel('about-panel', this)">ℹ️ About Us</li>
-                <li class="menu-item" onclick="switchPanel('settings-panel', this)">⚙️ Settings</li>
-            </ul>
+    <div class="sidebar-header-mobile">
+        <div class="brand-title">
+            <img src="/static/weather_app/images/logo.png" alt="Logo" style="width:24px; height:24px;"> <span>WeatherOS</span>
         </div>
+        
+        <button class="hamburger-menu-btn" onclick="toggleMobileMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+
+    <div class="mode-toggle-box-always-visible">
+        <div class="theme-switch-container">
+            <span>Light</span>
+            <input type="checkbox" id="themeToggleCheckbox">
+            <span>Dark</span>
+        </div>
+    </div>
+
+    <div class="menu-list" id="mobileMenuList">
+        <a href="#" class="menu-item">Home</a>
+        <a href="#" class="menu-item">Weather Alerts</a>
+        <a href="#" class="menu-item">Report Center</a>
+        <a href="#" class="menu-item">About Us</a>
+        <a href="#" class="menu-item">Settings</a>
+    </div>
+</div>
         
         <div class="mode-toggle-box">
             <div class="theme-pill-container">
@@ -710,6 +718,14 @@
                 }
             });
         }
+
+        function toggleMobileMenu() {
+            var menu = document.getElementById("mobileMenuList");
+            if (menu) {
+                menu.classList.toggle("active");
+            }
+        }
+        
     </script>
 </body>
 </html>
