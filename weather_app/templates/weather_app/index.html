@@ -666,45 +666,35 @@
                 darkPill.classList.toggle('active-pill', theme === 'dark');
             }
         }
-
         function mapDynamicVectors() {
-    const processVector = (txt) => {
-        if (!txt) return "https://cdn-icons-png.flaticon.com/128/1163/1163624.png";
-        
-        // Current hour check
-        const currentHour = new Date().getHours();
-        const isNight = currentHour >= 19 || currentHour < 6; // 7 PM se 6 AM tak night
-        
-        const normalized = txt.trim().toLowerCase();
-        
-        // Agar clear/sunny hai aur raat hai, to moon icon use karein
-        if(normalized.includes('sunny') || normalized.includes('clear')) {
-            return isNight ? "https://cdn-icons-png.flaticon.com/128/3625/3625211.png" : "https://cdn-icons-png.flaticon.com/128/869/869869.png"; 
+            const processVector = (txt) => {
+                if (!txt) return "https://cdn-icons-png.flaticon.com/128/1163/1163624.png";
+                const normalized = txt.trim().toLowerCase();
+                
+                if(normalized.includes('sunny') || normalized.includes('clear')) {
+                    return "https://cdn-icons-png.flaticon.com/128/869/869869.png"; 
+                }
+                if(normalized.includes('cloud') || normalized.includes('overcast') || normalized.includes('mist') || normalized.includes('fog')) {
+                    return "https://cdn-icons-png.flaticon.com/128/414/414825.png"; 
+                }
+                if(normalized.includes('rain') || normalized.includes('drizzle') || normalized.includes('shower') || normalized.includes('patchy')) {
+                    return "https://cdn-icons-png.flaticon.com/128/3351/3351979.png"; 
+                }
+                if(normalized.includes('thunder') || normalized.includes('storm')) {
+                    return "https://cdn-icons-png.flaticon.com/128/1779/1779940.png"; 
+                }
+                return "https://cdn-icons-png.flaticon.com/128/1163/1163624.png"; 
+            };
+            
+            const condElem = document.getElementById('conditionText');
+            if(condElem){
+                const mainTxt = condElem.innerText;
+                document.getElementById('primaryVector').src = processVector(mainTxt);
+                document.querySelectorAll('.hourly-icon-node').forEach(img => {
+                    img.src = processVector(img.getAttribute('data-desc'));
+                });
+            }
         }
-        
-        // Baki conditions wahi rahengi
-        if(normalized.includes('cloud') || normalized.includes('overcast') || normalized.includes('mist') || normalized.includes('fog')) {
-            return isNight ? "https://cdn-icons-png.flaticon.com/128/1163/1163662.png" : "https://cdn-icons-png.flaticon.com/128/414/414825.png"; 
-        }
-        if(normalized.includes('rain') || normalized.includes('drizzle') || normalized.includes('shower') || normalized.includes('patchy')) {
-            return "https://cdn-icons-png.flaticon.com/128/3351/3351979.png"; 
-        }
-        if(normalized.includes('thunder') || normalized.includes('storm')) {
-            return "https://cdn-icons-png.flaticon.com/128/1779/1779940.png"; 
-        }
-        return "https://cdn-icons-png.flaticon.com/128/1163/1163624.png"; 
-    };
-    
-    // Baki function code waisa hi rahega
-    const condElem = document.getElementById('conditionText');
-    if(condElem){
-        const mainTxt = condElem.innerText;
-        document.getElementById('primaryVector').src = processVector(mainTxt);
-        document.querySelectorAll('.hourly-icon-node').forEach(img => {
-            img.src = processVector(img.getAttribute('data-desc'));
-        });
-    }
-}
         
         // FIXED: String mapping instead of hard attributes fetching directly into elements to remove 'undefined' template issues
         function setMetricUnit(unit) {
