@@ -168,6 +168,114 @@
         .generic-card { background: var(--card-bg); padding: 25px; border-radius: 12px; border: 1px solid var(--border-color); line-height: 2; }
         .error-msg { color: #ef4444; font-weight: 500; }
         .setting-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px dashed var(--border-color); }
+
+/* Tablets and Small Desktops (Large Screens / Landscape Mobile) */
+@media screen and (max-width: 1024px) {
+    .main-container {
+        padding: 20px 20px 0 20px; /* Padding thoda kam kr diya */
+    }
+    .dashboard-panel {
+        max-width: 100%;
+    }
+}
+
+/* Tablets / Medium Screens */
+@media screen and (max-width: 768px) {
+    body {
+        flex-direction: column; /* Sidebar top par chala jaye aur dashboard niche */
+        height: auto;
+        overflow-y: auto; /* Screen scroll ho sakegi */
+    }
+    .sidebar {
+        width: 100%;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+        padding: 15px;
+    }
+    .brand-title {
+        margin-bottom: 15px;
+    }
+    .menu-list {
+        flex-direction: row; /* Tabs ko horizontal lines mein convert kiya */
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+    .menu-item {
+        padding: 8px 12px;
+        font-size: 14px;
+        flex: 1;
+        min-width: 120px;
+        justify-content: center;
+    }
+    .main-container {
+        padding: 20px;
+        height: auto;
+        overflow-y: visible;
+    }
+    .search-form {
+        width: 100%; /* Search bar full width ho jaye */
+    }
+    .main-weather-block {
+        grid-template-columns: 1fr; /* Single column grid grid items stack krne ke liye */
+        text-align: center;
+        gap: 20px;
+    }
+    .left-vector-zone {
+        justify-content: center;
+    }
+    .extra-stats {
+        border-left: none;
+        border-top: 1px solid var(--border-color);
+        border-bottom: 1px solid var(--border-color);
+        padding-left: 0;
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+    .right-indices-box {
+        min-width: 100%;
+    }
+    .condition-headline {
+        text-align: center;
+    }
+    .triggers-split-layout {
+        grid-template-columns: 1fr; /* Triggers and Operations Feed vertically align ho jayen */
+    }
+    .footer-columns-grid {
+        grid-template-columns: repeat(2, 1fr); /* Footer links columns mobile k mutabiq adjusting */
+    }
+    .footer-bottom-flex {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 20px;
+    }
+    .footer-signature-zone {
+        text-align: center;
+    }
+}
+
+/* Mobile Screens (Phones) */
+@media screen and (max-width: 480px) {
+    .menu-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* Mobile screen par tabs 2x2 grid ban jayenge */
+    }
+    .top-row {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .weather-card, .outside-section-card {
+        padding: 15px; /* Padding kam kr di taake content screen ke andar fit rhe */
+    }
+    .temp-num-container {
+        font-size: 55px; /* Temperature font size chota kr diya */
+    }
+    .footer-columns-grid {
+        grid-template-columns: 1fr; /* Footer links ek single line stack mein */
+    }
+}
+        
     </style>
     <!-- Vercel Web Analytics -->
     <script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
