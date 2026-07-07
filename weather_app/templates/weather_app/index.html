@@ -440,24 +440,29 @@
                     <div class="tab-node" onclick="toggleSliderMetric('wind', this)">Wind</div>
                 </div>
                 <div class="slider-outer-frame">
-                    <div class="slider-inner-container">
-                        {% for hour in hourly %}
-                        <div class="slider-box" {% if hour.time == 'Now' %}style="background: rgba(26,115,232,0.12); border-color:#1a73e8;"{% endif %}>
-                            <span class="hour-lbl">{{ hour.time }}</span>
-                            <img src="" class="hourly-icon-node" data-desc="{{ hour.condition }}">
-                            <span class="val-lbl data-point" 
-                                  data-tc="{{ hour.temp_c }}°" 
-                                  data-tf="{{ hour.temp_f }}°" 
-                                  data-precip="{{ hour.rain_chance }}%" 
-                                  data-wind="{{ hour.wind_kph }} km/h">
-                                {{ hour.temp_c }}°
-                            </span>
-                            <span class="desc-lbl">{{ hour.condition }}</span>
-                        </div>
-                        {% endfor %}
-                    </div>
-                </div>
-            </div>
+    <div class="slider-inner-container">
+        {% for hour in hourly %}
+        <div class="slider-box" 
+             data-time="{{ hour.is_day }}" 
+             {% if hour.time == 'Now' %}style="background: rgba(26,115,232,0.12); border-color:#1a73e8;"{% endif %}>
+            
+            <span class="hour-lbl">{{ hour.time }}</span>
+            
+            <img src="" class="hourly-icon-node" data-desc="{{ hour.condition }}">
+            
+            <span class="val-lbl data-point" 
+                  data-tc="{{ hour.temp_c }}°" 
+                  data-tf="{{ hour.temp_f }}°" 
+                  data-precip="{{ hour.rain_chance }}%" 
+                  data-wind="{{ hour.wind_kph }} km/h">
+                {{ hour.temp_c }}°
+            </span>
+            <span class="desc-lbl">{{ hour.condition }}</span>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
             <div class="outside-section-card">
                 <h2>🛡️ Regional Security & Precautions</h2>
                 <p style="font-size: 14px; color: var(--text-sub); margin-bottom: 10px;">Recommended safety lifestyle directives for current atmospheric parameters in {{ weather.city }}.</p>
