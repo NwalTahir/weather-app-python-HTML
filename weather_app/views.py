@@ -14,10 +14,10 @@ def weather_home(request):
     
     API_KEY = os.getenv("WEATHER_API_KEY")
     # Defaut city if none searched yet
-    city = "Okara" 
+    city = "Lahore" 
 
     if request.method == 'POST':
-        city = request.POST.get('city', '').strip() or "Okara"
+        city = request.POST.get('city', '').strip() or "Lahore"
 
     # WeatherAPI se forecast aur alerts dono data mangwana (alerts=yes)
     url = f"http://api.weatherapi.com/v1/forecast.json?key={API_KEY}&q={city}&days=2&aqi=no&alerts=yes"
@@ -76,7 +76,7 @@ def weather_home(request):
                             'time': formatted_time,
                             'temp_c': round(hour_item['temp_c']),
                             'temp_f': round(hour_item['temp_f']),
-                            'is_day': hour_item['is_day'],
+                            'is_day': hour_item['is_day'], #githubbbbbb mn krna hai add
                             'rain_chance': hour_item['chance_of_rain'],
                             'wind_kph': round(hour_item['wind_kph']),
                             'condition': hour_item['condition']['text']
