@@ -76,6 +76,7 @@ def weather_home(request):
                             'time': formatted_time,
                             'temp_c': round(hour_item['temp_c']),
                             'temp_f': round(hour_item['temp_f']),
+                            'is_day': hour_item['is_day'],
                             'rain_chance': hour_item['chance_of_rain'],
                             'wind_kph': round(hour_item['wind_kph']),
                             'condition': hour_item['condition']['text']
